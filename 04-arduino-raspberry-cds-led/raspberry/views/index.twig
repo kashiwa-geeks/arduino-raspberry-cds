@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>LED</title>
+<meta name="viewport" content="target-densitydpi=device-dpi, width=190, maximum-scale=1.0">
+<script>
+var send = function(c){
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/sp/'+c, false);
+  xhr.onload = function(e) {
+    if (xhr.status == 200) {
+      // alert(xhr.responseText);
+    }
+  };
+  xhr.send(null);
+}
+window.onload = function(){
+  var boxes = document.body.getElementsByClassName('box');
+  for (var i = 0; i < boxes.length; i++) {
+    boxes[i].addEventListener('click', function(){send(this.id)}, false);
+  }
+}
+</script>
+</head>
+<body>
+<svg viewBox="0 0 190 70">
+  <rect class="box" id="r" x=10 y=10 width=50 height=50 style="stroke:black;fill:rgba(234,192,217,1);" />
+  <rect class="box" id="g" x=70 y=10 width=50 height=50 style="stroke:black;fill:rgba(217,234,192,1);" />
+  <rect class="box" id="b" x=130 y=10 width=50 height=50 style="stroke:black;fill:rgba(192,217,234,1);" />
+</svg>
+</body>
+</html>
+
