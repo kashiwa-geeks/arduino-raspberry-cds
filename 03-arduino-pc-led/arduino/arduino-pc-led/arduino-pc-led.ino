@@ -1,7 +1,11 @@
+int ledRed = 11;
+int ledGreen = 9;
+int ledBlue = 10;
+
 void setup() {
-  pinMode(11, OUTPUT);
-  pinMode(10, OUTPUT);
-  pinMode(9, OUTPUT);
+  pinMode(ledRed, OUTPUT);
+  pinMode(ledGreen, OUTPUT);
+  pinMode(ledBlue, OUTPUT);
   Serial.begin(9600);
 }
 
@@ -11,22 +15,22 @@ void loop() {
     String str = Serial.readStringUntil('.');
 
     if (str == "r1"){
-      digitalWrite(11, HIGH);
+      digitalWrite(ledRed, HIGH);
     }
     else if (str == "r0"){
-      digitalWrite(11,LOW);
+      digitalWrite(ledRed,LOW);
     }
     else if (str == "b1"){
-      digitalWrite(10, HIGH);
+      digitalWrite(ledBlue, HIGH);
     }
     else if (str == "b0"){
-      digitalWrite(10,LOW);
+      digitalWrite(ledBlue,LOW);
     }
     else if (str == "g1"){
-      digitalWrite(9, HIGH);
+      digitalWrite(ledGreen, HIGH);
     }
     else if (str == "g0"){
-      digitalWrite(9,LOW);
+      digitalWrite(ledGreen,LOW);
     }
 
   }
