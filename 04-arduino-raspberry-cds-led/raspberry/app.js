@@ -22,7 +22,7 @@ app.get('/', function(req, res){
 
 app.get('/sp/:data', function(req, res){
   sp.write(req.params.data + '.');
-  res.render('sended.twig', {
+  res.render('sent.twig', {
     message : req.params.data + 'を送信しました'
   });
 });
