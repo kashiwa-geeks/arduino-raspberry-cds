@@ -1,6 +1,3 @@
-char input[30];   // 文字列格納用
-int i = 0;  // 文字数のカウンタ
-
 int ledRed = 11; //PWMピン
 int ledGreen = 9; //PWMピン
 int ledBlue = 10; //PWMピン
@@ -16,45 +13,34 @@ void setup() {
 }
 
 void loop() {
-  if (Serial.available()) {
-    while (1) {
-      input[i] = Serial.read();
-      if (i < 30 && input[i] != '.') {
-        i++;
-      } else { // 文字数が30以上 or 末尾文字
-        // 末尾に終端文字の挿入
-        input[i] = '\0';
-        // カウンタの初期化
-        i = 0;
-        break;
-      }
-    }
+  if (Serial.available() > 0) {
+    String str = Serial.readStringUntil('.');
 
-    if (String(input) == "r"){
+    if (str == "r"){
       ledRedFlag ^= true; //Flag反転
     }
-    if (String(input) == "r1"){
+    else if (str == "r1"){
       ledRedFlag = true;
     }
-    else if (String(input) == "r0"){
+    else if (str == "r0"){
       ledRedFlag = false;
     }
-    else if (String(input) == "g"){
+    else if (str == "g"){
       ledGreenFlag ^= true; //Flag反転
     }
-    else if (String(input) == "g1"){
+    else if (str == "g1"){
       ledGreenFlag = true;
     }
-    else if (String(input) == "g0"){
+    else if (str == "g0"){
       ledGreenFlag = false;
     }
-    else if (String(input) == "b"){
+    else if (str == "b"){
       ledBlueFlag ^= true; //Flag反転
     }
-    else if (String(input) == "b1"){
+    else if (str == "b1"){
       ledBlueFlag = true;
     }
-    else if (String(input) == "b0"){
+    else if (str == "b0"){
       ledBlueFlag = false;
     }
 
